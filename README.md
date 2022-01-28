@@ -1,6 +1,6 @@
 ﻿# Study-Buddy
  ## Web Version(recomended)
- just go to the link in the aout section
+ just go to the link in the about section
  
  ## running Locally
  ### Windows
