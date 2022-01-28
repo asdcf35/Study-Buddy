@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<style>
+  #parent-div{
+    display: grid;
+    place-items: center;
+    width: 100vw;
+    height: 100vh;
+  }
+  #pomodoro-timer button{
+    margin-right: 1vw;
+  }
+  .is-black{
+    margin-left: 1vw;
+  }
+</style>
+<body>
+  <a class="delete" href="index.html"></a>
+  <div id="parent-div">
+  <!--The main code-->
+<div id="pomodoro-timer" class="box container is-max-desktop">
+  <center>
+                <div class="timer-wrapper">
+                    <div class="timer-wrapper_time">
+                        <span class="timer-wrapper_time-minutes title is-2">{{ minutes }}:</span>
+                        <span class="timer-wrapper_time-seconds title is-2">{{ seconds }}</span>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="timer-wrapper_buttons">
+                        <button class="button is-black" v-on:click="reset()">Reset</button>
+                        <button class="button is-danger" v-on:click="pause()">Pause</button>
+                        <button class="button is-warning" v-on:click="resume()">Resume</button>
+                        <button class="button is-success" v-on:click="breakTime()">Break</button>
+                        <button class="button is-info" v-on:click="study()">Study</button>
+                    </div>
+                </div>
+            </div>
+</center>
+  </div>
+  <!--cleas-->
+  </div>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="timer.js"></script>
+</body>
+</html>

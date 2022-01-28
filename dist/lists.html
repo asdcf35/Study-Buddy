@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+
+  <!--Create a todo list app in Vue 3-->
+  <div id="app">
+    <button class="delete" v-on:click="storeTodo"></button>
+    <div class="container">
+      <div class="columns">
+        <div class="column is-half is-offset-one-quarter">
+          <div class="box">
+            <div class="field">
+              <label id="todo"class="label">Todo</label>
+              <div class="control">
+                <input class="input" v-model="newTodo" placeholder="Add a todo">
+              </div>
+            </div>
+            <div class="field">
+              <label id="todo"class="label">Description</label>
+              <div class="control">
+                <textarea class="textarea" v-model="newDescription"></textarea>
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <button class="button is-primary" @click="addTodo">Add Todo</button>
+              </div>
+            </div>
+          </div>
+          <div class="box">
+            <table class="table is-fullwidth is-striped">
+              <thead>
+                <tr>
+                  <th>Todo</th>
+                  <th>Description</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(todo, index) in todos">
+                  <td>{{ todo }}</td>
+                  <td>{{ description[index] }}</td>
+                  <td>
+                    <button class="button is-danger" @click="deleteTodo(index)">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    //create a todo app in Vue 3
+    let todo = Vue.createApp({
+      data() {
+        return{
+          todos: [],
+          description: [],
+          newTodo: '',
+          newDescription: ''
+        }
+      },
+      methods: {
+        addTodo() {
+          this.todos.push(this.newTodo)
+          this.description.push(this.newDescription)
+          this.newTodo = ''
+          this.newDescription = ''
+        },
+        deleteTodo(index) {
+          this.todos.splice(index, 1)
+          this.description.splice(index, 1)
+        },
+        //create a function to store the todos locally
+        storeTodo(){
+          localStorage.setItem('todos', JSON.stringify(this.todos))
+          localStorage.setItem('description', JSON.stringify(this.description));
+          window.location = "index.html";
+        },
+        //create a function to retrieve the todos locally
+        retrieveTodo(){
+          this.todos = JSON.parse(localStorage.getItem('todos'))
+          this.description = JSON.parse(localStorage.getItem('description'))
+        }
+      }     
+    });
+
+    todo.mount('#app');
+  </script>
+</body>
