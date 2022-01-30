@@ -7,10 +7,23 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 </head>
 <body>
-
+  <style>
+/* center #app both horizontally and vertically */
+#app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  </style>
   <!--Create a todo list app in Vue 3-->
   <div id="app">
-    <button class="delete" v-on:click="storeTodo"></button>
+    <center>
+      <span>
+    <p class="title">Tasks to complete</p>
+    <p class="subtitle">NOTE: in the desktop version, there will be no storage of previous tasks</p>
+    <a class="delete" href="index.html"></a>
+   </span> 
+    </center>
     <div class="container">
       <div class="columns">
         <div class="column is-half is-offset-one-quarter">
@@ -80,14 +93,11 @@
           this.todos.splice(index, 1)
           this.description.splice(index, 1)
         },
-        //create a function to store the todos locally
-        storeTodo(){
+        storeData() {
           localStorage.setItem('todos', JSON.stringify(this.todos))
-          localStorage.setItem('description', JSON.stringify(this.description));
-          window.location = "index.html";
+          localStorage.setItem('description', JSON.stringify(this.description))
         },
-        //create a function to retrieve the todos locally
-        retrieveTodo(){
+        retrieveData() {
           this.todos = JSON.parse(localStorage.getItem('todos'))
           this.description = JSON.parse(localStorage.getItem('description'))
         }
