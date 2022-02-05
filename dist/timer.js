@@ -1,8 +1,10 @@
+clicked = 0;
 let PomodoroTimer = Vue.createApp({
     data() {
         return {
             minutes: 25,
             seconds: 0,
+            isPaused: false,
         };
     },
     mounted() {
@@ -29,20 +31,27 @@ let PomodoroTimer = Vue.createApp({
             this.seconds = 0;
         },
         pause() {
-            clearInterval(this.timer);
+            // pause the timer
+            this.isPaused = true;
         },
         resume() {
-            minusing_quality = 0;
-            this.timer = setInterval(() => {
+            clicked++;
+            for(i==0; i<; i++){
                 if (this.seconds == 0) {
                     this.seconds = 60;
                     this.minutes--;
                 }
-                if(minusing_quality == 0){
-                    minusing_quality++;
+                if(clicked == 1){
+                    this.seconds -= clicked;
+                } else{
+                    clicked == 1;
+                if(this.isPaused == True){
+                    this.isPaused = false;
+                    break;
                 }
-                this.seconds -= minusing_quality;
-            }, 1000);
+                }
+
+            }
         },
         breakTime() {
             this.minutes = 5;
