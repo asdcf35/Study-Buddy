@@ -32,12 +32,16 @@ let PomodoroTimer = Vue.createApp({
             clearInterval(this.timer);
         },
         resume() {
+            minusing_quality = 0;
             this.timer = setInterval(() => {
                 if (this.seconds == 0) {
                     this.seconds = 60;
                     this.minutes--;
                 }
-                this.seconds--;
+                if(minusing_quality == 0){
+                    minusing_quality++;
+                }
+                this.seconds -= minusing_quality;
             }, 1000);
         },
         breakTime() {
