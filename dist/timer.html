@@ -36,8 +36,7 @@
                     <br>
                     <div class="timer-wrapper_buttons">
                         <button class="button is-black" v-on:click="reset()">Reset</button>
-                        <button class="button is-danger" v-on:click="pause()">Pause</button>
-                        <button class="button is-warning" v-on:click="resume()">Resume</button>
+                        <button class="button is-warning" v-on:click="pause()">{{ timerResumeToPause }}</button>
                         <button class="button is-success" v-on:click="breakTime()">Break</button>
                         <button class="button is-info" v-on:click="study()">Study</button>
                     </div>
