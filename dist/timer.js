@@ -36,7 +36,6 @@ let PomodoroTimer = Vue.createApp({
             this.seconds = 0;
         },
         pause() {           
-            //pause the timer and resume it when clicked
             if (this.timerResumeToPause === "Pause") {
                 clearInterval(this.timer);
                 this.timerResumeToPause = "Resume";
